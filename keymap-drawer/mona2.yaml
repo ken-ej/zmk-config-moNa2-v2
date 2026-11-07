@@ -59,32 +59,32 @@ layers:
   - D
   - F
   - G
-  - '-'
+  - Sft+Gui+4
   - H
   - J
   - K
   - L
-  - {t: ;, h: MOUSE_W}
+  - '-'
   - {t: Z, h: LEFT SHIFT}
   - X
   - C
   - V
   - B
+  - ESCAPE
   - ':'
-  - ;
   - N
   - M
   - ','
   - .
   - {t: /, h: BLE_M}
-  - LEFT GUI
-  - LEFT WIN
+  - LCTRL
   - LEFT ALT
-  - {t: '`', h: NUM_M}
-  - {t: SPACE, h: MOUSE_M}
-  - {t: '-', h: SCRL_M}
-  - ENTER
-  - BACKSPACE
+  - LEFT GUI
+  - {t: ESCAPE, h: MOUSE_M}
+  - {t: Gui+SPACE, h: NUM_M}
+  - {t: SPACE, h: SCRL_M, type: held}
+  - {t: ENTER, type: held}
+  - {t: BACKSPACE, h: FN_M}
   - RIGHT SHIFT
   NUM_W:
   - ESCAPE
@@ -130,44 +130,44 @@ layers:
   - BACKSPACE
   - RIGHT SHIFT
   NUM_M:
-  - ESCAPE
   - '!'
-  - '@'
+  - '"'
   - '#'
-  - $
-  - '='
+  - '%'
+  - ''''
   - '7'
   - '8'
   - '9'
+  - /
   - '*'
-  - TAB
-  - '%'
-  - ^
-  - '&'
-  - '*'
-  - '%'
+  - (
+  - )
+  - '{'
+  - '}'
+  - '|'
   - '0'
   - '4'
   - '5'
   - '6'
   - '-'
-  - '|'
-  - (
-  - )
+  - +
   - '['
   - ']'
-  - {t: ▽, type: trans}
-  - +
+  - ;
+  - ':'
+  - '?'
+  - _
   - .
   - '1'
   - '2'
   - '3'
+  - '='
+  - .
+  - <
+  - '>'
   - /
-  - LEFT GUI
-  - LEFT GUI
-  - LEFT ALT
-  - {type: held}
   - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   - ENTER
   - BACKSPACE
@@ -252,8 +252,8 @@ layers:
   - LCTRL
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - ENTER
   - BACKSPACE
@@ -302,31 +302,27 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   SCRL_M:
-  - ESCAPE
-  - Ctl+Sft+TAB
-  - UP ARROW
-  - Ctl+TAB
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - '&mkp MB3'
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - HOME
-  - LEFT ARROW
-  - DOWN ARROW
-  - RIGHT ARROW
-  - END
-  - OUT TOG
-  - {t: ▽, type: trans}
-  - '&mkp MB1'
-  - {t: ▽, type: trans}
-  - '&mkp MB2'
-  - {t: ▽, type: trans}
-  - LEFT SHIFT
-  - Gui+Sft+LEFT ARROW
-  - {t: ▽, type: trans}
-  - Gui+Sft+RIGHT ARROW
+  - Sft+!
+  - Sft+"
+  - Sft+#
+  - Sft+$
+  - Sft+%
+  - '&'
+  - ''''
+  - ^
+  - '~'
+  - '-'
+  - '@'
+  - Sft+{
+  - '['
+  - (
+  - <
+  - '>'
+  - )
+  - ']'
+  - '}'
+  - ;
+  - ':'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -335,6 +331,10 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  - '?'
+  - _
+  - '|'
+  - \
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -390,6 +390,32 @@ layers:
   FN_M:
   - A
   - {t: ▽, type: trans}
+  - MUTE
+  - VOLUME DOWN
+  - VOLUME UP
+  - Ctl+Alt+LEFT ARROW
+  - Ctl+Alt+ENTER
+  - Ctl+Alt+RIGHT ARROW
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - HOME
+  - {t: ▽, type: trans}
+  - LEFT ARROW
+  - DOWN
+  - UP ARROW
+  - RIGHT ARROW
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - END
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -402,33 +428,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   BLE_W:
   - F1
@@ -518,6 +518,10 @@ layers:
   - BT CLR ALL
 combos:
 - p: [39, 38]
-  k: {t: ESC, h: MOUSE_W}
+  k: {t: ESC, h: MAC}
 - p: [11, 12]
   k: TAB
+- p: [13, 12]
+  k: LANG2
+- p: [17, 18]
+  k: LANG1

@@ -1,4 +1,4 @@
-layout: {zmk_keyboard: mona2}
+layout: {zmk_keyboard: .mona2-draw}
 layers:
   WIN:
   - Q
@@ -221,22 +221,22 @@ layers:
   - UP ARROW
   - Gui+Sft+Z
   - Gui+V
-  - ^
-  - '&'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - '&mkp MB3'
-  - (
-  - )
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - TAB
   - LEFT ARROW
   - Gui+Ctl+Sft+4
   - RIGHT ARROW
   - Gui+A
-  - _
-  - '!'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - '&mkp MB1'
-  - SCRL_M
+  - {t: ▽, type: trans}
   - '&mkp MB2'
-  - Ctl+SPACE
+  - {t: ▽, type: trans}
   - {t: KP 0, h: LEFT SHIFT}
   - Gui+Ctl+Z
   - DOWN ARROW
@@ -244,11 +244,11 @@ layers:
   - Gui+LEFT
   - '='
   - {t: ▽, type: trans}
-  - '['
-  - ']'
-  - '{'
-  - '}'
-  - Ctl+SPACE
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - LCTRL
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -257,7 +257,7 @@ layers:
   - {t: ▽, type: trans}
   - ENTER
   - BACKSPACE
-  - '|'
+  - {t: ▽, type: trans}
   SCRL_W:
   - ESCAPE
   - Ctl+Sft+TAB

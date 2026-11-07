@@ -1,24 +1,67 @@
-name: "Draw ZMK Keymap"
+name: Draw ZMK Keymap
 
 on:
   workflow_dispatch:
-  # push時に自動で実行する場合は、以下のコメントアウトを外す
   push:
     paths:
+      - ".github/workflows/draw.yml"
       - "config/mona2.keymap"
+      - "config/mona2.json"
       - "keymap_drawer.config.yaml"
       - "config/mona2.dtsi"
 
 jobs:
   draw:
-    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@f9cf9d3677368a7fb1dc505c51b8156fafa66fe2
+    runs-on: ubuntu-latest
     permissions:
       contents: write
-    with:
-      commit_message: "[Draw] ${{ github.event.head_commit.message || 'Update keymap drawing' }}"
-      amend_commit: false
-      keymap_patterns: "config/*.keymap"
-      json_path: "config"
-      config_path: "keymap_drawer.config.yaml" # config file, ignored if not exists
-      output_folder: "keymap-drawer"
-      destination: "both"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install drawing tools
+        run: python -m pip install keymap-drawer==0.23.0 west
+
+      - name: Fetch west modules
+        run: |
+          west init -l config
+          west config --local manifest.project-filter " -zmk,-zephyr"
+          west update --fetch-opt=--filter=tree:0
+
+      - name: Draw keymap
+        shell: bash
+        run: |
+          # Keymap Editor may write layer arguments as (3), which keymap-drawer
+          # cannot parse. Normalize only the drawing input, beside the source
+          # so that relative includes still resolve.
+          draw_input=$(mktemp config/.mona2-draw.XXXXXX)
+          trap 'rm -f "$draw_input"' EXIT
+          sed -E 's/(&(lt|mo|to|tog|sl|lt_to_layer_0|tp_repeat_mo1)[[:space:]]+)\([[:space:]]*([0-9]+)[[:space:]]*\)/\1\3/g' \
+            config/mona2.keymap > "$draw_input"
+
+          config_args=()
+          if [[ -f keymap_drawer.config.yaml ]]; then
+            config_args=(-c keymap_drawer.config.yaml)
+          fi
+
+          mkdir -p keymap-drawer
+          keymap "${config_args[@]}" parse -z "$draw_input" > keymap-drawer/mona2.yaml
+          keymap "${config_args[@]}" draw keymap-drawer/mona2.yaml -j config/mona2.json > keymap-drawer/mona2.svg
+
+      - name: Commit updated images
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "[Draw] ${{ github.event.head_commit.message || 'Update keymap drawing' }}"
+          file_pattern: keymap-drawer/mona2.yaml keymap-drawer/mona2.svg
+
+      - name: Upload drawings
+        uses: actions/upload-artifact@v4
+        with:
+          name: drawings
+          path: |
+            keymap-drawer/mona2.yaml
+            keymap-drawer/mona2.svg
+          if-no-files-found: error
